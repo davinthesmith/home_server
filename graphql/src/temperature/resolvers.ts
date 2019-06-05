@@ -1,5 +1,4 @@
-// import * as C from "./constants"
-// import { ITemperature } from "./types";
+import { ITemperature, Source } from "."
 
 const temperatures: ITemperature[] = [
   {
@@ -16,6 +15,7 @@ const temperatures: ITemperature[] = [
 
 export const resolvers = {
   Query: {
-    temperatures: (parent: any, { source }: {source: Source }) => temperatures.filter(x => x.source === source),
+    temperatures: (parent: any, { source }: { source: Source }) =>
+      temperatures.filter(x => x.source === source),
   }
 };
