@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  ui:
+    build: ./ui
+    restart: always
+    ports: 
+      - 80:80
+    depends_on:
+      - db
+  db:
+    image: mongo
+    restart: always
+    ports:  
+      - 27017:27017
+    env_file:
+      - ./mongo.env
