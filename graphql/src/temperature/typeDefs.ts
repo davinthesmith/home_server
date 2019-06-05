@@ -2,22 +2,25 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Temperature {
-    source(type: Source): Source,
+    source(type: TemperatureSource): TemperatureSource,
     value: Float,
     dateTime: Float
   }
 
-  enum Source {
+  enum TemperatureSource {
     THERMOSTAT
     KITCHEN
     LIVING
     DINING
-    LAN
-    JADYN
+    BEDROOM1
+    BEDROOM2
+    BEDROOM3
+    OFFICE
+    GARAGE
     MASTER
   }
 
   extend type Query {
-    temperatures(source: Source!): [Temperature]
+    temperatures( source: TemperatureSource, startDate: Float, endDate: Float): [Temperature]
   }
 `;
