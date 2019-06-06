@@ -1,16 +1,27 @@
 version: "3.7"
 services:
   ui:
+    container_name: home_server_ui
     build: ./ui
     restart: always
-    ports: 
+    ports:
       - 80:80
     depends_on:
       - db
+  graphql:
+    container_name: home_server_graphql
+    build: ./graphql
+    command: "nodemon --inspect=5858"
+    volumes: 
+      - ./graphql/dist:/app/dist
+    ports:
+      - 4000:4000
+      - 5858:5858
   db:
+    container_name: home_server_mongo
     image: mongo
     restart: always
-    ports:  
+    ports:
       - 27017:27017
     env_file:
       - ./mongo.env
