@@ -1,4 +1,4 @@
-import { Temperature, TemperatureSource as TemperatureSource, TemperatureInput } from "../gen-types"
+import { Temperature, TemperatureSource, TemperatureInput } from "../gen-types"
 
 const temperatures: Temperature[] = [
   {
@@ -13,29 +13,36 @@ const temperatures: Temperature[] = [
   }
 ];
 
-interface ITemperaturesInputs { source: TemperatureSource, startDate: Number, endDate: Number }
-interface ITemperatureMutatorInput { input: TemperatureInput }
+interface QueryTemperaturesArgs {
+  source: TemperatureSource,
+  startDate: Number,
+  endDate: Number
+}
+
+interface MutationAddTemperatureArgs {
+  input: TemperatureInput
+}
 
 export const resolvers = {
   Query: {
-    temperatures: (parent: any, { source, startDate, endDate }: ITemperaturesInputs) =>
+    temperatures: (parent: any, args: QueryTemperaturesArgs, ctx: any) =>
       temperatures.filter(x => {
-        const sourceMatch = source
-          ? source === x.source
+        const sourceMatch = args.source
+          ? args.source === x.source
           : true;
-        const afterStartDate = startDate
-          ? x.dateTime >= startDate
+        const afterStartDate = args.startDate
+          ? x.dateTime >= args.startDate
           : true;
-        const beforeEndDate = endDate
-          ? x.dateTime <= endDate
+        const beforeEndDate = args.endDate
+          ? x.dateTime <= args.endDate
           : true;
         return sourceMatch && afterStartDate && beforeEndDate;
       })
   },
   Mutation: {
-    addTemperature: (parent: any, { input }: ITemperatureMutatorInput) => {
-      temperatures.push(input);
-      return input;
+    addTemperature: (parent: any, args: MutationAddTemperatureArgs, ctx: any) => {
+      temperatures.push(args.input);
+      return args.input;
     }
   }
 };

@@ -5,8 +5,6 @@ require:
 
 generates:
   src/gen-types.ts:
-    config: 
-      defaultMapper: any
-      contextType: ./#Context
     plugins: 
       - typescript
+      # - typescript-resolvers
