@@ -1,13 +1,13 @@
-import { ITemperature, Source as TemperatureSource } from "."
+import { Temperature, TemperatureSource as TemperatureSource } from "../gen-types"
 
-const temperatures: ITemperature[] = [
+const temperatures: Temperature[] = [
   {
-    source: TemperatureSource.THERMOSTAT,
+    source: TemperatureSource.Thermostat,
     value: 70.1,
     dateTime: 1559715522812
   },
   {
-    source: TemperatureSource.LIVING,
+    source: TemperatureSource.Living,
     value: 73.2,
     dateTime: 1559715522813
   }

@@ -4,13 +4,17 @@
   "main": "index.js",
   "dependencies": {
     "apollo-server": "^2.6.1",
-    "graphql": "^14.3.1"
+    "graphql": "^14.3.1",
+    "merge-graphql-schemas": "^1.5.8"
   },
   "scripts": {
     "start": "concurrently --kill-others \"tsc -w --outDir devOutput\" \"nodemon --inspect ./devOutput/index.js\"",
-    "build": "tsc"
+    "build": "tsc",
+    "types": "graphql-codegen"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.2.0",
+    "@graphql-codegen/typescript": "^1.2.0",
     "concurrently": "^4.1.0",
     "nodemon": "^1.19.1",
     "ts-node-dev": "^1.0.0-pre.39",

@@ -2,9 +2,9 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Temperature {
-    source(type: TemperatureSource): TemperatureSource,
-    value: Float,
-    dateTime: Float
+    source(type: TemperatureSource): TemperatureSource!,
+    value: Float!,
+    dateTime: Float!
   }
 
   enum TemperatureSource {
