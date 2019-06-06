@@ -7,7 +7,7 @@ const typeDefRoot = gql`
   type Mutation
 `;
 
-export default mergeTypes([
+export default gql(mergeTypes([
   typeDefRoot,
   temperature.typeDefs
-])
+]))
