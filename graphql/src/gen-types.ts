@@ -8,6 +8,10 @@ export type Scalars = {
   Float: number;
 };
 
+export type Mutation = {
+  __typename?: "Mutation";
+};
+
 export type Query = {
   __typename?: "Query";
 };
@@ -19,8 +23,10 @@ export type Temperature = {
   dateTime: Scalars["Float"];
 };
 
-export type TemperatureSourceArgs = {
-  type?: Maybe<TemperatureSource>;
+export type TemperatureInput = {
+  source: TemperatureSource;
+  value: Scalars["Float"];
+  dateTime: Scalars["Float"];
 };
 
 export enum TemperatureSource {

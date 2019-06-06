@@ -4,6 +4,7 @@ import temperature from '../temperature'
 
 const typeDefRoot = gql`
   type Query
+  type Mutation
 `;
 
 export default mergeTypes([

@@ -2,7 +2,13 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Temperature {
-    source(type: TemperatureSource): TemperatureSource!,
+    source: TemperatureSource!,
+    value: Float!,
+    dateTime: Float!
+  }
+
+  input TemperatureInput {
+    source: TemperatureSource!,
     value: Float!,
     dateTime: Float!
   }
@@ -21,6 +27,10 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    temperatures( source: TemperatureSource, startDate: Float, endDate: Float): [Temperature]
+    temperatures (source: TemperatureSource, startDate: Float, endDate: Float): [Temperature]
+  }
+
+  extend type Mutation {
+    addTemperature (input: TemperatureInput): Temperature 
   }
 `;
