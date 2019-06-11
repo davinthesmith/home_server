@@ -3,6 +3,7 @@ node_modules
 
 #graphql
 graphql/dist
+graphql/Dockerfile
 
 # misc
 .DS_Store

@@ -11,7 +11,6 @@ services:
   graphql:
     container_name: home_server_graphql
     build: ./graphql
-    command: "nodemon --inspect=5858"
     volumes: 
       - ./graphql/dist:/app/dist
     ports:

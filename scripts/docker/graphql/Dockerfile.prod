@@ -1,0 +1,9 @@
+FROM node
+WORKDIR /app/dist
+
+# copy app and build
+COPY . /app
+RUN yarn 
+RUN yarn tsc
+
+CMD ["node"]
