@@ -18,6 +18,7 @@
     "@graphql-codegen/typescript": "^1.2.0",
     "@types/graphql": "^14.2.0",
     "@types/lodash": "^4.14.133",
+    "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   }
 }
