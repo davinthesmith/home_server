@@ -18,6 +18,7 @@ export type Query = {
 
 export type Temperature = {
   __typename?: "Temperature";
+  _id: Scalars["String"];
   source: TemperatureSource;
   value: Scalars["Float"];
   dateTime: Scalars["Float"];

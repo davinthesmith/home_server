@@ -2,14 +2,15 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Temperature {
-    source: TemperatureSource!,
-    value: Float!,
+    _id: String!
+    source: TemperatureSource!
+    value: Float!
     dateTime: Float!
   }
 
   input TemperatureInput {
-    source: TemperatureSource!,
-    value: Float!,
+    source: TemperatureSource!
+    value: Float!
     dateTime: Float!
   }
 
