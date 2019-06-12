@@ -10,8 +10,9 @@ let db: Db;
 export const mongo = async () => {
   if (db) return db;
   try {
-    const client = await MongoClient.connect(MONGO_CONNSTRING);
-    return client.db(MONGO_DB);
+    const client = await MongoClient.connect(MONGO_CONNSTRING, { poolSize: 5 });
+    db = client.db(MONGO_DB);
+    return db;
   } catch (err) {
     throw err;
   }
