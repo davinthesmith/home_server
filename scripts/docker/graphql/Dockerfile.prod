@@ -1,0 +1,10 @@
+FROM node
+WORKDIR /app/dist
+
+# copy app and build
+COPY ./package.json /app/package.json
+RUN yarn 
+COPY . /app
+RUN yarn tsc
+
+CMD ["node"]

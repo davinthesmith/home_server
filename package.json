@@ -6,6 +6,7 @@
   "author": "Davin Smith <davinsmith@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "setup": "./scripts/init.sh"
+    "init-dev": "./scripts/init_dev.sh",
+    "dev": "docker-compose up --build"
   }
 }

@@ -1,1 +1,21 @@
+#dependencies
+node_modules
+
+#graphql
+graphql/dist
+graphql/Dockerfile
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#environment files
 mongo.env

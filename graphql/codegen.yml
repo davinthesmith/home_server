@@ -1,0 +1,10 @@
+schema: ./src/root/typeDefs.ts
+
+require:
+  - ts-node/register
+
+generates:
+  src/gen-types.ts:
+    plugins: 
+      - typescript
+      # - typescript-resolvers

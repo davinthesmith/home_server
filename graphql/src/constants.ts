@@ -1,0 +1,1 @@
+export const TEMPERATURE_COLLECTION = 'temperature';
