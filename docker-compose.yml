@@ -16,6 +16,10 @@ services:
     ports:
       - 4000:4000
       - 5858:5858
+    env_file:
+      - ./graphql/.env
+    depends_on:
+      - db
   db:
     container_name: home_server_mongo
     image: mongo

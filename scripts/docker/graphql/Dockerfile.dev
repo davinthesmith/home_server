@@ -5,7 +5,8 @@ WORKDIR /app/dist
 RUN yarn global add nodemon
 
 # copy app and build
-COPY . /app
+COPY ./package.json /app/package.json
 RUN yarn 
+COPY . /app
 
 CMD ["nodemon", "--inspect=5858"]
