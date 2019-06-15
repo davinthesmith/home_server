@@ -1,9 +1,9 @@
 import { connect, MqttClient } from 'mqtt';
-import { routes } from './routes'
+import { router, topics } from './routes'
 import { log } from '../utils/logger'
 import { MQTT_URL } from '../constants'
 
-const MQTT_TOPICS = routes.map(x => x.topic);
+const MQTT_TOPICS = topics;
 
 // the exported client used for all things mqtt
 export const client = connect(MQTT_URL);
@@ -21,13 +21,7 @@ client.on('connect', async () => {
 // route incoming messages
 client.on('message', (topic, message) => {
   log.info(`MQTT Message: ${topic}: ${message}`)
-  const rootTopic = topic.split('/')[1];
-  const route = routes.find(x => x.topic === rootTopic);
-  if (route) {
-    route.handler(topic, message);
-  } else {
-    log.warn(`MQTT: ${rootTopic} is not a valid route`)
-  }
+  router({ topic, message });
 })
 
 // automatically subscribes to the array of topics and all of their sub topics

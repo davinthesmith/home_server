@@ -16,6 +16,8 @@
 // request('my-endpoint', query, variables).then(data => console.log(data))
 
 import { log } from '../../utils/logger'
-export const temperatureHandler = (topic: string, message: Buffer) => {
+import { MqttRouteHandler } from '../types'
+
+export const temperatureHandler: MqttRouteHandler = ({ topic, message }) => {
   log.info(`HANDLER HIT: ${topic} ${message}`)
 }
