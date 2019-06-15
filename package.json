@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "init-dev": "./scripts/init_dev.sh",
-    "run": "docker-compose up", 
+    "start": "docker-compose up", 
     "stop": "docker-compose stop", 
     "build": "docker-compose up --build"
   }
