@@ -1,6 +1,6 @@
-import { mongo } from "../db/mongo";
+import { mongo } from "../../db/mongo";
 import { Temperature, TemperatureSource, TemperatureInput } from "../gen-types"
-import { TEMPERATURE_COLLECTION } from '../constants'
+import { TEMPERATURE_COLLECTION } from '../../constants'
 
 interface QueryTemperaturesArgs {
   source: TemperatureSource,

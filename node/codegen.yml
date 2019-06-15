@@ -1,10 +1,12 @@
-schema: ./src/root/typeDefs.ts
+# Used to automatically generate TypeScript types from graphql schema
+# Execute `yarn types` to run
+schema: ./src/graphql/root/typeDefs.ts
 
 require:
   - ts-node/register
 
 generates:
-  src/gen-types.ts:
+  ./src/graphql/gen-types.ts:
     plugins: 
       - typescript
       # - typescript-resolvers

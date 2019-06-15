@@ -1,3 +1,5 @@
+import temperature from "./graphql/temperature";
+
 // App
 export const APP_URL = process.env.APP_URL;
 export const APP_PORT = Number(process.env.APP_PORT);
@@ -14,3 +16,9 @@ export const MONGO_CONNSTRING = `mongodb://${USERNAME}:${PASSWORD}@${MONGO_URL}:
 
 // Database collections
 export const TEMPERATURE_COLLECTION = 'temperature';
+
+// MQTT 
+export const MQTT_URL = process.env.MQTT_URL;
+export const MQTT_SUBSCRIPTIONS = [
+  'temperature'
+]
