@@ -1,12 +1,14 @@
 {
   "name": "home_server",
   "version": "1.0.0",
-  "description": "A React and GraphQL server for in-home projects",
+  "description": "A React and node server for in-home projects",
   "repository": "https://github.com/davinthesmith/home_server.git",
   "author": "Davin Smith <davinsmith@outlook.com>",
   "license": "MIT",
   "scripts": {
     "init-dev": "./scripts/init_dev.sh",
-    "dev": "docker-compose up --build"
+    "run": "docker-compose up", 
+    "stop": "docker-compose stop", 
+    "build": "docker-compose up --build"
   }
 }

@@ -8,16 +8,16 @@ services:
       - 80:80
     depends_on:
       - db
-  graphql:
-    container_name: home_server_graphql
-    build: ./graphql
+  node:
+    container_name: home_server_node
+    build: ./node
     volumes: 
-      - ./graphql/dist:/app/dist
+      - ./node/dist:/app/dist
     ports:
       - 4000:4000
       - 5858:5858
     env_file:
-      - ./graphql/.env
+      - ./node/.env
     depends_on:
       - db
   db:

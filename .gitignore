@@ -1,9 +1,9 @@
 #dependencies
 node_modules
 
-#graphql
-graphql/dist
-graphql/Dockerfile
+#node
+node/dist
+node/Dockerfile
 
 # misc
 .DS_Store
