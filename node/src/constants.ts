@@ -19,6 +19,6 @@ export const TEMPERATURE_COLLECTION = 'temperature';
 
 // MQTT 
 export const MQTT_URL = process.env.MQTT_URL;
-export const MQTT_SUBSCRIPTIONS = [
+export const MQTT_TOPICS = [
   'temperature'
 ]

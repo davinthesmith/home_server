@@ -25,8 +25,10 @@ const server = new ApolloServer({
 });
 server.applyMiddleware({ app });
 
-// start Mqtt client
+// start Mqtt client.  
+// NOTE: Even though we don't use this reference, we need to set it up so TypeScript knows to include the Mqtt files
 const mqtt = client; 
+// mqtt.end();
 
 // start Express
 app.listen({ port: APP_PORT }, () => {
