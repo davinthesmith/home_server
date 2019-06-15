@@ -1,21 +1,25 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import { log } from './utils/logger'
 import resolvers from './root/resolvers'
 import typeDefs from './root/typeDefs'
 import { APP_URL, APP_PORT } from './constants';
-import { requestLogger, errorLogger } from './middleware/logger';
 
 // setup Express
 const app = express();
 
-// add logging middleware
-app.use(requestLogger);
-app.use(errorLogger);
-
 // setup ApolloServer and add to Express
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  formatError: error => {
+    log.error(error);
+    return error;
+  },
+  formatResponse: (response: any) => {
+    log.info(response);
+    return response;
+  },
 });
 server.applyMiddleware({ app });
 
