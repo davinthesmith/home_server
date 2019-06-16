@@ -1,11 +1,6 @@
-import temperature from "./graphql/temperature";
-
 // App
 export const APP_URL = process.env.APP_URL;
 export const APP_PORT = Number(process.env.APP_PORT);
-
-// Logging 
-export const LOGGING_PATH = "/error";
 
 // Database
 export const MONGO_DB = process.env.MONGO_DB;
