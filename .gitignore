@@ -5,6 +5,9 @@ node_modules
 node/dist
 node/Dockerfile
 
+# docker-compose
+docker-compose.yml
+
 # misc
 .DS_Store
 .env
