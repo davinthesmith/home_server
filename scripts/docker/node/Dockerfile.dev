@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /app/dist
+WORKDIR /app
 
 # install nodemon for DEV environment
 RUN yarn global add nodemon
@@ -9,4 +9,4 @@ COPY ./package.json /app/package.json
 RUN yarn 
 COPY . /app
 
-CMD ["nodemon", "--inspect=5858"]
+CMD ["nodemon", "--inspect=0.0.0.0:5858", "./dist/index.js"]
