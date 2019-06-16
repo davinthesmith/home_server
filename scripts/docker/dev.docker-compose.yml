@@ -8,9 +8,11 @@ services:
       - 80:80
     depends_on:
       - hs_node
+      - hs_mongo
   hs_node:
     container_name: hs_node
     build: ./node
+    restart: always
     volumes: 
       - ./node/dist:/app/dist
     ports:
@@ -25,6 +27,8 @@ services:
     container_name: hs_mongo
     image: mongo
     restart: always
+    volumes: 
+      - ./mongo/data:/data/db
     ports:
       - '27017:27017'
     env_file:
