@@ -1,10 +1,12 @@
 #!/bin/sh
 ROOT_FOLDER="$PWD"
+MONGO_FOLDER="$PWD/mongo"
 SCRIPTS_FOLDER="$PWD/scripts"
 NODE_FOLDER="$PWD/node"
 
 # MongoDB Files
-cp ${SCRIPTS_FOLDER}/env/db/dev.env ${ROOT_FOLDER}/mongo.env
+mkdir -p ${MONGO_FOLDER}
+cp ${SCRIPTS_FOLDER}/env/db/dev.env ${MONGO_FOLDER}/.env
 
 # Node Files
 cp ${SCRIPTS_FOLDER}/env/node/dev.env ${NODE_FOLDER}/.env

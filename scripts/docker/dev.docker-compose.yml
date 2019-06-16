@@ -1,15 +1,15 @@
 version: "3.7"
 services:
-  ui:
-    container_name: home_server_ui
+  hs_ui:
+    container_name: hs_ui
     build: ./ui
     restart: always
     ports:
       - 80:80
     depends_on:
-      - db
-  node:
-    container_name: home_server_node
+      - hs_node
+  hs_node:
+    container_name: hs_node
     build: ./node
     volumes: 
       - ./node/dist:/app/dist
@@ -19,18 +19,18 @@ services:
     env_file:
       - ./node/.env
     depends_on:
-      - db
-      - mqtt
-  db:
-    container_name: home_server_mongo
+      - hs_mongo
+      - hs_mqtt
+  hs_mongo:
+    container_name: hs_mongo
     image: mongo
     restart: always
     ports:
       - '27017:27017'
     env_file:
-      - ./mongo.env
-  mqtt:
-    container_name: home_server_mqtt
+      - ./mongo/.env
+  hs_mqtt:
+    container_name: hs_mqtt
     image: eclipse-mosquitto
     restart: always
     ports:
