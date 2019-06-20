@@ -35,10 +35,9 @@ export const resolvers = {
       try {
         const query = db(TEMPERATURE_COLLECTION)
           .insert(args.input)
-          .returning('_id', 'source', 'value', 'dateTime');
-        const insertedId = await query;
-        return { ...args.input, '_id': insertedId[0] };
-
+          .returning(['_id', 'source', 'value', 'dateTime']);
+        const results = await query
+        return results[0];
       } catch (err) { throw err }
     }
   }
