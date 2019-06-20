@@ -1,12 +1,12 @@
 #!/bin/sh
 ROOT_FOLDER="$PWD"
-MONGO_FOLDER="$PWD/mongo"
+POSTGRES_FOLDER="$PWD/postgres"
 SCRIPTS_FOLDER="$PWD/scripts"
 NODE_FOLDER="$PWD/node"
 
-# MongoDB Files
-mkdir -p ${MONGO_FOLDER}
-cp ${SCRIPTS_FOLDER}/env/db/dev.env ${MONGO_FOLDER}/.env
+# PostgreSQL Files
+mkdir -p ${POSTGRES_FOLDER}
+cp ${SCRIPTS_FOLDER}/env/db/dev.env ${POSTGRES_FOLDER}/.env
 
 # Node Files
 cp ${SCRIPTS_FOLDER}/env/node/dev.env ${NODE_FOLDER}/.env

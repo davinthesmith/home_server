@@ -4,25 +4,30 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "apollo-server": "^2.6.1",
     "async-mqtt": "^2.3.0",
+    "dotenv": "^8.0.0",
     "graphql": "^14.3.1",
     "graphql-request": "^1.8.2",
+    "knex": "^0.17.6",
     "lodash": "^4.17.11",
     "merge-graphql-schemas": "^1.5.8",
-    "mongodb": "^3.2.7",
+    "pg": "^7.11.0",
     "winston": "^3.2.1"
   },
   "scripts": {
     "watch": "tsc -w",
-    "types": "graphql-codegen"
+    "types": "graphql-codegen",
+    "migrate-make": "knex migrate:make --knexfile ./src/db/knexfile.js",
+    "migrate-latest": "knex migrate:latest --knexfile ./src/db/knexfile.js",
+    "migrate-down": "knex migrate:down --knexfile ./src/db/knexfile.js"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript": "^1.2.0",
     "@types/graphql": "^14.2.0",
     "@types/lodash": "^4.14.133",
-    "@types/mongodb": "^3.1.28",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   }
