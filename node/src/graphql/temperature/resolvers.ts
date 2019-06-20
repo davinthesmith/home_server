@@ -1,6 +1,6 @@
-import { mongo } from "../../db/mongo";
+import { db } from '../../db';
 import { Temperature, TemperatureSource, TemperatureInput } from "../gen-types"
-import { TEMPERATURE_COLLECTION } from '../../constants'
+import { TEMPERATURE_COLLECTION } from '../../constants';
 
 interface QueryTemperaturesArgs {
   source: TemperatureSource,
@@ -16,28 +16,29 @@ export const resolvers = {
   Query: {
     temperatures: async (parent: any, args: QueryTemperaturesArgs, ctx: any): Promise<Temperature[]> => {
       try {
-        const db = await mongo();
+        const query = db(TEMPERATURE_COLLECTION)
+          .select('_id', 'source', 'value', 'dateTime');
 
         // build query object
-        let query: any = {};
-        if (args.source) query.source = args.source;
+        if (args.source) query.where('source', args.source)
 
         // build dateRange query
-        let dateQuery: any = {};
-        if (args.startDate) dateQuery["$gte"] = args.startDate;
-        if (args.endDate) dateQuery["$lte"] = args.endDate;
-        if (Object.keys(dateQuery).length) query.dateTime = { ...dateQuery };
+        if (args.startDate) query.where('dateTime', '>=', args.startDate);
+        if (args.endDate) query.where('dateTime', '<=', args.endDate);
 
-        return await db.collection(TEMPERATURE_COLLECTION).find(query).toArray();
+        return await query;
       } catch (err) { throw err }
     }
   },
   Mutation: {
     addTemperature: async (parent: any, args: MutationAddTemperatureArgs, ctx: any): Promise<Temperature> => {
       try {
-        const db = await mongo();
-        const result = await db.collection(TEMPERATURE_COLLECTION).insertOne(args.input);
-        return result.ops[0];
+        const query = db(TEMPERATURE_COLLECTION)
+          .insert(args.input)
+          .returning('_id', 'source', 'value', 'dateTime');
+        const insertedId = await query;
+        return { ...args.input, '_id': insertedId[0] };
+
       } catch (err) { throw err }
     }
   }
