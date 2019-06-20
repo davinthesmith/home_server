@@ -1,6 +1,6 @@
 import { db } from '../../db';
 import { Temperature, TemperatureSource, TemperatureInput } from "../gen-types"
-import { TEMPERATURE_COLLECTION } from '../../constants';
+import { TEMPERATURE_COLLECTION, TEMPERATURE_COLUMNS } from '../../constants';
 
 interface QueryTemperaturesArgs {
   source: TemperatureSource,
@@ -16,13 +16,10 @@ export const resolvers = {
   Query: {
     temperatures: async (parent: any, args: QueryTemperaturesArgs, ctx: any): Promise<Temperature[]> => {
       try {
-        const query = db(TEMPERATURE_COLLECTION)
-          .select('_id', 'source', 'value', 'dateTime');
+        const query = db(TEMPERATURE_COLLECTION).select(TEMPERATURE_COLUMNS);
 
-        // build query object
-        if (args.source) query.where('source', args.source)
-
-        // build dateRange query
+        // set optional where clauses
+        if (args.source) query.where('source', args.source);
         if (args.startDate) query.where('dateTime', '>=', args.startDate);
         if (args.endDate) query.where('dateTime', '<=', args.endDate);
 
@@ -35,8 +32,8 @@ export const resolvers = {
       try {
         const query = db(TEMPERATURE_COLLECTION)
           .insert(args.input)
-          .returning(['_id', 'source', 'value', 'dateTime']);
-        const results = await query
+          .returning(TEMPERATURE_COLUMNS);
+        const results = await query;
         return results[0];
       } catch (err) { throw err }
     }
