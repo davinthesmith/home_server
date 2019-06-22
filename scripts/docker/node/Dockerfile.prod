@@ -4,7 +4,9 @@ WORKDIR /app/dist
 # copy app and build
 COPY ./package.json /app/package.json
 RUN yarn 
+RUN yarn global add nodemon
 COPY . /app
 RUN yarn tsc
 
-CMD ["node"]
+#CMD ["node"]
+CMD ["nodemon", "--inspect=0.0.0.0:5858", "./index.js"]
