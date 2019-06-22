@@ -18,7 +18,7 @@
   },
   "scripts": {
     "watch": "tsc -w",
-		"build": "tsc",
+    "build": "tsc",
     "types": "graphql-codegen",
     "migrate-make": "knex migrate:make --knexfile ./src/db/knexfile.js",
     "migrate-latest": "knex migrate:latest --knexfile ./src/db/knexfile.js",
