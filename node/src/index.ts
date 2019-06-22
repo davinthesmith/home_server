@@ -30,7 +30,6 @@ server.applyMiddleware({ app });
 const mqtt = client; 
 // mqtt.end();
 
-
 // start Express
 app.listen({ port: APP_PORT }, () => {
   console.log(`🚀 Server ready at ${APP_URL}:${APP_PORT}${server.graphqlPath}`);
