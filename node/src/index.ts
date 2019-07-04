@@ -27,7 +27,7 @@ server.applyMiddleware({ app });
 
 // start Mqtt client.  
 // NOTE: Even though we don't use this reference, we need to set it up so TypeScript knows to include the Mqtt files
-const mqtt = client; 
+const mqtt = client;
 // mqtt.end();
 
 // start Express

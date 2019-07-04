@@ -1,5 +1,5 @@
 import { MqttRoute } from '../types'
-import { temperatureHandler } from '../temperature'
+import { temperatureHandler } from "../temperature"
 
 // links routes with handlers
 export const routes: MqttRoute[] = [
