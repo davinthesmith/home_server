@@ -1,9 +1,9 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { client } from './mqtt'
-import { log } from './utils/logger'
-import resolvers from './graphql/root/resolvers'
-import typeDefs from './graphql/root/typeDefs'
+import { client } from './mqtt';
+import { log } from './utils/logger';
+import resolvers from './graphql/root/resolvers';
+import typeDefs from './graphql/root/typeDefs';
 import { APP_URL, APP_PORT } from './constants';
 
 // setup Express

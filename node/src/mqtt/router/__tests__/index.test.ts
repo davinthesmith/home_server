@@ -1,4 +1,4 @@
-import { router, getHandlerByRootTopic } from '..'
+import { router, getHandlerByRootTopic } from '..';
 
 jest.mock('../routes', () => ({
   routes: [
@@ -7,13 +7,13 @@ jest.mock('../routes', () => ({
       handler: jest.fn()
     },
   ]
-}))
+}));
 
-describe("MQTT:Router:index", () => {
+describe('MQTT:Router:index', () => {
   it('should find handler by root topic', () => {
     const thing = getHandlerByRootTopic('test');
     expect(thing).toBeDefined();
   });
 
-  it('should route', () => {})
-})
+  it('should route', () => {});
+});
