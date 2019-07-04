@@ -20,7 +20,7 @@ exports.up = async db => {
     ]).notNullable();
     table.float('value').notNullable();
     table.float('dateTime').notNullable();
-  })
+  });
 };
 
 exports.down = async db => {
