@@ -16,8 +16,7 @@ const subscribeToTopics = async (client: MqttClient, topics: string[]) => {
     const topicsAndSubTopics = topics.map(topic => `/${topic}/#`);
     return await Promise.all(topicsAndSubTopics.map(asyncSubscribe));
   } catch (err) {
-    log.error(err);
-    throw (err);
+    log.error(err.message);
   }
 };
 
