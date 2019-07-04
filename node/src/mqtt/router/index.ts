@@ -1,6 +1,9 @@
-import { log } from '../../utils/logger'
-import { MqttPayload } from '../types'
-import { routes } from './routes'
+import { log } from '../../utils/logger';
+import { MqttPayload } from '../types';
+import { routes } from './routes';
+
+export const getHandlerByRootTopic = (rootTopic: string) =>
+  routes.find(x => x.topic === rootTopic);
 
 // find the route and send
 export const router = async ({ topic, message }: MqttPayload) => {
@@ -16,6 +19,4 @@ export const router = async ({ topic, message }: MqttPayload) => {
   } catch (err) {
     log.error(err.message);
   }
-}
-
-export const getHandlerByRootTopic = (rootTopic: string) => routes.find(x => x.topic === rootTopic);
+};

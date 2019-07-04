@@ -1,9 +1,9 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { client } from './mqtt'
-import { log } from './utils/logger'
-import resolvers from './graphql/root/resolvers'
-import typeDefs from './graphql/root/typeDefs'
+import { client } from './mqtt';
+import { log } from './utils/logger';
+import resolvers from './graphql/root/resolvers';
+import typeDefs from './graphql/root/typeDefs';
 import { APP_URL, APP_PORT } from './constants';
 
 // setup Express
@@ -27,7 +27,7 @@ server.applyMiddleware({ app });
 
 // start Mqtt client.  
 // NOTE: Even though we don't use this reference, we need to set it up so TypeScript knows to include the Mqtt files
-const mqtt = client; 
+const mqtt = client;
 // mqtt.end();
 
 // start Express

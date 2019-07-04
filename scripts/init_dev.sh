@@ -14,3 +14,6 @@ cp ${SCRIPTS_FOLDER}/docker/node/Dockerfile.dev ${NODE_FOLDER}/Dockerfile
 
 # Docker Compose
 cp ${SCRIPTS_FOLDER}/docker/dev.docker-compose.yml ${ROOT_FOLDER}/docker-compose.yml
+
+# Compile Node project 
+yarn --cwd node build

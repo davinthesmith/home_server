@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config({ path: '../../.env'});
+require('dotenv').config({ path: '../../.env' });
 
 const {
   POSTGRES_URL,
@@ -15,7 +15,7 @@ if (!POSTGRES_DB || !POSTGRES_USER || !POSTGRES_PASSWORD) {
   throw Error('Please provide POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD');
 }
 
- module.exports = {
+module.exports = {
   client: 'pg',
   connection: {
     host: POSTGRES_URL ? POSTGRES_URL : 'localhost',

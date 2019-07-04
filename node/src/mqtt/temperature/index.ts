@@ -21,7 +21,7 @@ export const temperatureHandler: MqttRouteHandler = async ({ topic, message }) =
     default:
       throw new Error("MQTT:Temperature: Unrecognized action");
   }
-}
+};
 
 const add = async ({ source, value, dateTime }: TemperatureInput) => {
   const query = `mutation _($input: TemperatureInput) {

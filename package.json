@@ -10,8 +10,15 @@
     "init-prod": "./scripts/init_prod.sh",
     "start": "docker-compose up --build",
     "stop": "docker-compose stop",
-    "build": "docker-compose up --build -d"
+    "build": "docker-compose up --build -d",
+    "lint:node": "eslint --fix ./node/src"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "typescript": "^3.5.2"
+  }
 }

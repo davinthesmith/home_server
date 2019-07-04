@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@types/dotenv": "^6.1.1",
     "apollo-server": "^2.6.1",
     "async-mqtt": "^2.3.0",
     "dotenv": "^8.0.0",
@@ -22,13 +21,18 @@
     "types": "graphql-codegen",
     "migrate-make": "knex migrate:make --knexfile ./src/db/knexfile.js",
     "migrate-latest": "knex migrate:latest --knexfile ./src/db/knexfile.js",
-    "migrate-down": "knex migrate:down --knexfile ./src/db/knexfile.js"
+    "migrate-down": "knex migrate:down --knexfile ./src/db/knexfile.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
     "@graphql-codegen/typescript": "^1.2.0",
+    "@types/dotenv": "^6.1.1",
     "@types/graphql": "^14.2.0",
+    "@types/jest": "^24.0.15",
     "@types/lodash": "^4.14.133",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
     "ts-node": "^8.2.0",
     "typescript": "^3.5.1"
   }
