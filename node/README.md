@@ -10,7 +10,19 @@ Run `yarn watch`. This will build the TypeScript files into the `dist` folder an
 Run `yarn test`.  This just runs jest.  You can add flags if you see fit.
 
 ## MQTT
-The node server spins up an MQTT subscriber for every topic included in the `MQTT_TOPICS` array in the `constants.ts` file. Topics are then registered in the `mqtt/router/routes.ts` file.  Each registration maps the root topic name to the associated handler.  Within each handler, the route is re-evaluated and used to route the payload to the appropriate subfunction within the handler.  Phew, that's a mouthful.  I'm working on making this easier to reason about.
+The node server spins up an MQTT subscriber for every topic included in the `MQTT_TOPICS` array in the `constants.ts` file. Topics are then registered in the `mqtt/router/routes.ts` file.  Each registration maps the root topic name to the associated handler.  
+### Handlers
+Within each handler, the topic is re-evaluated and used to route the payload to the appropriate subfunction within the handler.  
+
+Each topic is expected to follow this convention:
+```
+/roottopic/action/source
+```
+
+Example:
+```
+/temperature/add/BEDROOM1
+```
 
 
 ## Database

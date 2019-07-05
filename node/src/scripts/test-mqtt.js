@@ -7,15 +7,15 @@ client.on('connect', function () {
   client.subscribe('/temperature/#', function (err) {
     if (!err) {
       client.publish(
-        "/temperature/add/BEDROOM1",
+        '/temperature/add/BEDROOM1',
         JSON.stringify({
-          source: "BEDROOM2",
+          source: 'BEDROOM2',
           value: 72,
           dateTime: 12000
         })
       );
       client.publish(
-        "/temperature/add/BEDROOM1",
+        '/temperature/add/BEDROOM1',
 
         JSON.stringify({
           source: 'BEDROOM1',
@@ -23,7 +23,7 @@ client.on('connect', function () {
         })
       );
       client.publish(
-        "/temperature/add/BEDROOM1",
+        '/temperature/add/BEDROOM1',
         JSON.stringify({
           value: 72,
           dateTime: 11000
