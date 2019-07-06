@@ -27,18 +27,26 @@ const add = async ({ source, temperatureValue, humidityValue, dateTime }: HvacVa
     }
   } as { input: HvacValueInput };
 
+	console.log(variables);
+
   const result = await request(`${APP_URL}:${APP_PORT}/graphql`, query, variables);
   return result;
 };
 
 //TODO: replace hardcoded id router
-const getSourceById = (sensorId: string) => ([{
-  id: 'test-01',
-  value: HvacValueSource.Garage
-}].find(x => x.id === sensorId) || { value: null }).value;
+const getSourceById = (sensorId: string) => ([
+  {
+    id: 'test-01',
+    value: HvacValueSource.Garage
+  },
+  {
+	  id: 'wemos-01',
+		value: HvacValueSource.Living
+  }
+].find(x => x.id === sensorId) || { value: null }).value;
 
 export const hvacValueHandler: MqttRouteHandler = async ({ topic, message }) => {
-  const dateTime = Date.now();
+  const dateTime = new Date().getTime();
   const route = topic.split('/');
   assert(route.length === 4, `${LOG} Route should follow convention: /home/hvac/sensor-id`);
 
