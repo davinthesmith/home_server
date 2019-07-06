@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
-import temperature from '../temperature';
+import hvac from '../hvac';
 
 export default merge(
-  temperature.resolvers,
+  hvac.resolvers,
 ); 

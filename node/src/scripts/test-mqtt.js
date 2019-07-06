@@ -7,26 +7,18 @@ client.on('connect', function () {
   client.subscribe('/temperature/#', function (err) {
     if (!err) {
       client.publish(
-        '/temperature/add/BEDROOM1',
+        '/home/hvac/test-01',
         JSON.stringify({
-          source: 'BEDROOM2',
-          value: 72,
+          temperatureValue: 72,
+          humidityValue: -1,
           dateTime: 12000
         })
       );
       client.publish(
-        '/temperature/add/BEDROOM1',
-
+        '/home/hvac/test-01',
         JSON.stringify({
-          source: 'BEDROOM1',
-          value: 72,
-        })
-      );
-      client.publish(
-        '/temperature/add/BEDROOM1',
-        JSON.stringify({
-          value: 72,
-          dateTime: 11000
+          temperatureValue: 72,
+          humidityValue: -1,
         })
       );
     }

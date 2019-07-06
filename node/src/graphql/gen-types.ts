@@ -8,29 +8,23 @@ export type Scalars = {
   Float: number;
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-};
-
-export type Query = {
-  __typename?: 'Query';
-};
-
-export type Temperature = {
-  __typename?: 'Temperature';
+export type HvacValue = {
+  __typename?: 'HvacValue';
   _id: Scalars['String'];
-  source: TemperatureSource;
-  value: Scalars['Float'];
+  source: HvacValueSource;
+  temperatureValue: Scalars['Float'];
+  humidityValue: Scalars['Float'];
   dateTime: Scalars['Float'];
 };
 
-export type TemperatureInput = {
-  source: TemperatureSource;
-  value: Scalars['Float'];
+export type HvacValueInput = {
+  source: HvacValueSource;
+  temperatureValue: Scalars['Float'];
+  humidityValue: Scalars['Float'];
   dateTime: Scalars['Float'];
 };
 
-export enum TemperatureSource {
+export enum HvacValueSource {
   Thermostat = 'THERMOSTAT',
   Kitchen = 'KITCHEN',
   Living = 'LIVING',
@@ -42,3 +36,11 @@ export enum TemperatureSource {
   Garage = 'GARAGE',
   Master = 'MASTER'
 }
+
+export type Mutation = {
+  __typename?: 'Mutation';
+};
+
+export type Query = {
+  __typename?: 'Query';
+};

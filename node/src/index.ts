@@ -18,8 +18,8 @@ const server = new ApolloServer({
     return error;
   },
   formatResponse: (response: any) => {
-    // don't log schema requests
-    if (!response.data.__schema) log.info(response);
+    // don't log schema requests or errors
+    if ((!response.data || !response.data.__schema) && !response.errors) log.info(response);
     return response;
   },
 });
