@@ -27,8 +27,6 @@ const add = async ({ source, temperatureValue, humidityValue, dateTime }: HvacVa
     }
   } as { input: HvacValueInput };
 
-	console.log(variables);
-
   const result = await request(`${APP_URL}:${APP_PORT}/graphql`, query, variables);
   return result;
 };
@@ -40,9 +38,29 @@ const getSourceById = (sensorId: string) => ([
     value: HvacValueSource.Garage
   },
   {
-	  id: 'wemos-01',
-		value: HvacValueSource.Living
-  }
+    id: 'wemos-01',
+    value: HvacValueSource.Living
+  },
+  {
+    id: 'wemos-02',
+    value: HvacValueSource.Bedroom1
+  },
+  {
+    id: 'wemos-03',
+    value: HvacValueSource.Bedroom2
+  },
+  {
+    id: 'wemos-04',
+    value: HvacValueSource.Master
+  },
+  {
+    id: 'wemos-05',
+    value: HvacValueSource.Kitchen
+  },
+  {
+    id: 'wemos-06',
+    value: HvacValueSource.Dining
+  },
 ].find(x => x.id === sensorId) || { value: null }).value;
 
 export const hvacValueHandler: MqttRouteHandler = async ({ topic, message }) => {
