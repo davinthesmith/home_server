@@ -9,38 +9,45 @@ export type Scalars = {
 };
 
 export type HvacValue = {
-  __typename?: 'HvacValue';
-  _id: Scalars['String'];
+  __typename?: "HvacValue";
+  _id: Scalars["String"];
   source: HvacValueSource;
-  temperatureValue: Scalars['Float'];
-  humidityValue: Scalars['Float'];
-  dateTime: Scalars['Float'];
+  temperatureValue: Scalars["Float"];
+  humidityValue: Scalars["Float"];
+  dateTime: Scalars["Float"];
 };
+
+export enum HvacValueColumns {
+  Source = "source",
+  TemperatureValue = "temperatureValue",
+  HumidityValue = "humidityValue",
+  DateTime = "dateTime"
+}
 
 export type HvacValueInput = {
   source: HvacValueSource;
-  temperatureValue: Scalars['Float'];
-  humidityValue: Scalars['Float'];
-  dateTime: Scalars['Float'];
+  temperatureValue: Scalars["Float"];
+  humidityValue: Scalars["Float"];
+  dateTime: Scalars["Float"];
 };
 
 export enum HvacValueSource {
-  Thermostat = 'THERMOSTAT',
-  Kitchen = 'KITCHEN',
-  Living = 'LIVING',
-  Dining = 'DINING',
-  Bedroom1 = 'BEDROOM1',
-  Bedroom2 = 'BEDROOM2',
-  Bedroom3 = 'BEDROOM3',
-  Office = 'OFFICE',
-  Garage = 'GARAGE',
-  Master = 'MASTER'
+  Thermostat = "THERMOSTAT",
+  Kitchen = "KITCHEN",
+  Living = "LIVING",
+  Dining = "DINING",
+  Bedroom1 = "BEDROOM1",
+  Bedroom2 = "BEDROOM2",
+  Bedroom3 = "BEDROOM3",
+  Office = "OFFICE",
+  Garage = "GARAGE",
+  Master = "MASTER"
 }
 
 export type Mutation = {
-  __typename?: 'Mutation';
+  __typename?: "Mutation";
 };
 
 export type Query = {
-  __typename?: 'Query';
+  __typename?: "Query";
 };

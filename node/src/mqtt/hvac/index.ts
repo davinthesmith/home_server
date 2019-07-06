@@ -1,6 +1,5 @@
 import assert from 'assert';
 import { request } from 'graphql-request';
-import { log } from '../../utils/logger';
 import { APP_URL, APP_PORT } from '../../constants';
 import { HvacValueInput, HvacValueSource } from '../../graphql/gen-types';
 import { MqttRouteHandler } from '../types';
