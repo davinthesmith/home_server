@@ -37,10 +37,10 @@ const getSourceById = (sensorId: string) => ([
     id: 'test-01',
     value: HvacValueSource.Garage
   },
-  {
-    id: 'wemos-01',
-    value: HvacValueSource.Living
-  },
+  // {
+  //   id: 'wemos-01',
+  //   value: HvacValueSource.Living
+  // },
   {
     id: 'wemos-02',
     value: HvacValueSource.Bedroom1
@@ -59,7 +59,7 @@ const getSourceById = (sensorId: string) => ([
   },
   {
     id: 'wemos-06',
-    value: HvacValueSource.Dining
+    value: HvacValueSource.Living
   },
 ].find(x => x.id === sensorId) || { value: null }).value;
 
