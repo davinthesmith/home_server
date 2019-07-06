@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server';
 import { mergeTypes } from 'merge-graphql-schemas';
-import temperature from '../temperature';
+import hvac from '../hvac';
 
 const typeDefRoot = gql`
   type Query
@@ -9,5 +9,5 @@ const typeDefRoot = gql`
 
 export default gql(mergeTypes([
   typeDefRoot,
-  temperature.typeDefs
+  hvac.typeDefs
 ]));
