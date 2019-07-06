@@ -1,6 +1,5 @@
 import assert from 'assert';
 import { request } from 'graphql-request';
-import { log } from '../../utils/logger';
 import { APP_URL, APP_PORT } from '../../constants';
 import { HvacValueInput, HvacValueSource } from '../../graphql/gen-types';
 import { MqttRouteHandler } from '../types';
@@ -32,13 +31,39 @@ const add = async ({ source, temperatureValue, humidityValue, dateTime }: HvacVa
 };
 
 //TODO: replace hardcoded id router
-const getSourceById = (sensorId: string) => ([{
-  id: 'test-01',
-  value: HvacValueSource.Garage
-}].find(x => x.id === sensorId) || { value: null }).value;
+const getSourceById = (sensorId: string) => ([
+  {
+    id: 'test-01',
+    value: HvacValueSource.Garage
+  },
+  // {
+  //   id: 'wemos-01',
+  //   value: HvacValueSource.Living
+  // },
+  {
+    id: 'wemos-02',
+    value: HvacValueSource.Bedroom1
+  },
+  {
+    id: 'wemos-03',
+    value: HvacValueSource.Bedroom2
+  },
+  {
+    id: 'wemos-04',
+    value: HvacValueSource.Master
+  },
+  {
+    id: 'wemos-05',
+    value: HvacValueSource.Kitchen
+  },
+  {
+    id: 'wemos-06',
+    value: HvacValueSource.Living
+  },
+].find(x => x.id === sensorId) || { value: null }).value;
 
 export const hvacValueHandler: MqttRouteHandler = async ({ topic, message }) => {
-  const dateTime = Date.now();
+  const dateTime = new Date().getTime();
   const route = topic.split('/');
   assert(route.length === 4, `${LOG} Route should follow convention: /home/hvac/sensor-id`);
 
