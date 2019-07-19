@@ -1,13 +1,7 @@
 import { gql } from 'apollo-server';
 import { mergeTypes } from 'merge-graphql-schemas';
-import hvac from '../hvac';
-
-const typeDefRoot = gql`
-  type Query
-  type Mutation
-`;
+import { typeDefs as hvac } from './hvac/typeDefs';
 
 export default gql(mergeTypes([
-  typeDefRoot,
-  hvac.typeDefs
+  hvac
 ]));
