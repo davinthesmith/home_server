@@ -30,17 +30,18 @@ export const typeDefs = gql`
   }
 
   enum HvacValueColumns {
+    _id
     source
     temperatureValue
     humidityValue
     dateTime
   }
 
-  extend type Query {
-    hvacValues (source: HvacValueSource, startDate: Float, endDate: Float, orderBy: [HvacValueColumns]): [HvacValue]
+  type Query {
+    hvacValues (source: HvacValueSource, startDate: Float, endDate: Float, orderBy: [HvacValueColumns!]): [HvacValue!]
   }
 
-  extend type Mutation {
+  type Mutation {
     addHvacValue (input: HvacValueInput): HvacValue
   }
 `;
