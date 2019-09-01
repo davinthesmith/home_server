@@ -37,6 +37,11 @@ export type HvacValueInput = {
   dateTime: Scalars["Float"];
 };
 
+export type HvacValueOrderBy = {
+  column: HvacValueColumns;
+  order?: Maybe<SqlSortDirection>;
+};
+
 export enum HvacValueSource {
   Thermostat = "THERMOSTAT",
   Kitchen = "KITCHEN",
@@ -68,8 +73,15 @@ export type QueryHvacValuesArgs = {
   source?: Maybe<HvacValueSource>;
   startDate?: Maybe<Scalars["Float"]>;
   endDate?: Maybe<Scalars["Float"]>;
-  orderBy?: Maybe<Array<HvacValueColumns>>;
+  first?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  orderBy?: Maybe<Array<HvacValueOrderBy>>;
 };
+
+export enum SqlSortDirection {
+  Asc = "asc",
+  Desc = "desc"
+}
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
@@ -145,7 +157,10 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   HvacValueSource: HvacValueSource;
   Float: ResolverTypeWrapper<Scalars["Float"]>;
+  Int: ResolverTypeWrapper<Scalars["Int"]>;
+  HvacValueOrderBy: HvacValueOrderBy;
   HvacValueColumns: HvacValueColumns;
+  SqlSortDirection: SqlSortDirection;
   HvacValue: ResolverTypeWrapper<HvacValue>;
   String: ResolverTypeWrapper<Scalars["String"]>;
   Mutation: ResolverTypeWrapper<{}>;
@@ -158,7 +173,10 @@ export type ResolversParentTypes = {
   Query: {};
   HvacValueSource: HvacValueSource;
   Float: Scalars["Float"];
+  Int: Scalars["Int"];
+  HvacValueOrderBy: HvacValueOrderBy;
   HvacValueColumns: HvacValueColumns;
+  SqlSortDirection: SqlSortDirection;
   HvacValue: HvacValue;
   String: Scalars["String"];
   Mutation: {};
