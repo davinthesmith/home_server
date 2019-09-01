@@ -8,7 +8,9 @@ export const resolvers: Resolvers = {
   Query: {
     hvacValues: async (parent, args) => {
       try {
-        const { source, startDate, endDate, first, offset, orderBy } = args;
+        const { source, startDate, endDate, first, offset } = args;
+        // graphql does not support union types for inputs, so we have to set orderBy to "any"
+        const orderBy: any = args.orderBy;
 
         const query = db(HVAC_TABLE).select(HVAC_COLUMNS);
 

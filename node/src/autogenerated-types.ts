@@ -39,7 +39,7 @@ export type HvacValueInput = {
 
 export type HvacValueOrderBy = {
   column: HvacValueColumns;
-  order?: Maybe<SqlSortDirection>;
+  order?: Maybe<SqlSortOrder>;
 };
 
 export enum HvacValueSource {
@@ -78,7 +78,7 @@ export type QueryHvacValuesArgs = {
   orderBy?: Maybe<Array<HvacValueOrderBy>>;
 };
 
-export enum SqlSortDirection {
+export enum SqlSortOrder {
   Asc = "asc",
   Desc = "desc"
 }
@@ -160,7 +160,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars["Int"]>;
   HvacValueOrderBy: HvacValueOrderBy;
   HvacValueColumns: HvacValueColumns;
-  SqlSortDirection: SqlSortDirection;
+  SqlSortOrder: SqlSortOrder;
   HvacValue: ResolverTypeWrapper<HvacValue>;
   String: ResolverTypeWrapper<Scalars["String"]>;
   Mutation: ResolverTypeWrapper<{}>;
@@ -176,7 +176,7 @@ export type ResolversParentTypes = {
   Int: Scalars["Int"];
   HvacValueOrderBy: HvacValueOrderBy;
   HvacValueColumns: HvacValueColumns;
-  SqlSortDirection: SqlSortDirection;
+  SqlSortOrder: SqlSortOrder;
   HvacValue: HvacValue;
   String: Scalars["String"];
   Mutation: {};
