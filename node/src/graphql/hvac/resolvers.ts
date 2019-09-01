@@ -8,16 +8,21 @@ export const resolvers: Resolvers = {
   Query: {
     hvacValues: async (parent, args) => {
       try {
+        const { source, startDate, endDate, first, offset, orderBy } = args;
+
         const query = db(HVAC_TABLE).select(HVAC_COLUMNS);
 
         // set optional where clauses
-        if (args.source) query.where('source', args.source);
-        if (args.startDate) query.where('dateTime', '>=', args.startDate);
-        if (args.endDate) query.where('dateTime', '<=', args.endDate);
+        if (source) query.where('source', source);
+        if (startDate) query.where('dateTime', '>=', startDate);
+        if (endDate) query.where('dateTime', '<=', endDate);
 
-        //TODO: Add support for desc and asc (requires object-syntax for columns in sorting)
-        // https://knexjs.org/#Builder-orderBy
-        if (args.orderBy) query.orderBy(args.orderBy);
+        // pagination
+        if (first) query.limit(first);
+        if (offset) query.offset(offset);
+
+        // optional sort direction
+        if (orderBy) query.orderBy(orderBy);
 
         return await query;
       } catch (err) { throw err; }

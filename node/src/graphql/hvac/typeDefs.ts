@@ -37,8 +37,20 @@ export const typeDefs = gql`
     dateTime
   }
 
+  input HvacValueOrderBy {
+    column: HvacValueColumns!
+    order: SqlSortOrder
+  }
+
   type Query {
-    hvacValues (source: HvacValueSource, startDate: Float, endDate: Float, orderBy: [HvacValueColumns!]): [HvacValue!]
+    hvacValues (
+      source: HvacValueSource, 
+      startDate: Float, 
+      endDate: Float, 
+      first: Int, 
+      offset: Int, 
+      orderBy: [HvacValueOrderBy!])
+      : [HvacValue!]
   }
 
   type Mutation {
