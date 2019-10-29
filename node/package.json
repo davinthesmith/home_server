@@ -9,7 +9,7 @@
     "dotenv": "^8.0.0",
     "graphql": "^14.3.1",
     "graphql-request": "^1.8.2",
-    "knex": "^0.17.6",
+    "knex": "^0.19.5",
     "lodash": "^4.17.11",
     "merge-graphql-schemas": "^1.5.8",
     "pg": "^7.11.0",
